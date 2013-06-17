@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<product productid="disallowregistrationifref" active="1">
+	<title>Anti-spambot: disallow if referer page = register</title>
+	<description>Disallow registration if referer page is the same as the register page itself</description>
+	<version>1.0</version>
+	<url><![CDATA[http://www.vbulletin.org/forum/misc.php?do=producthelp&pid=disallowregistrationifref]]></url>
+	<versioncheckurl><![CDATA[http://www.vbulletin.org/forum/misc.php?do=productcheck&pid=disallowregistrationifref]]></versioncheckurl>
+	<dependencies>
+	</dependencies>
+	<codes>
+	</codes>
+	<templates>
+	</templates>
+	<plugins>
+		<plugin active="1" executionorder="5">
+			<title>Plugin</title>
+			<hookname>register_start</hookname>
+			<phpcode><![CDATA[// ANTI-SPAMBOT
+// block access if the refering page is the same as your register page
+
+if ($_SERVER[$_SERVER['HTTP_REFERER'] == $vbulletin->options['bburl'].'/register.php') {
+	die();
+}]]></phpcode>
+		</plugin>
+	</plugins>
+	<phrases>
+	</phrases>
+	<options>
+	</options>
+	<helptopics>
+	</helptopics>
+	<cronentries>
+	</cronentries>
+	<faqentries>
+	</faqentries>
+</product>
