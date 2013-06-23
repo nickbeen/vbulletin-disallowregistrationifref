@@ -3,7 +3,7 @@
 <product productid="disallowregistrationifref" active="1">
 	<title>Anti-spambot: disallow if referer page = register</title>
 	<description>Disallow registration if referer page is the same as the register page itself</description>
-	<version>1.1</version>
+	<version>1.2</version>
 	<url><![CDATA[http://www.vbulletin.org/forum/misc.php?do=producthelp&pid=disallowregistrationifref]]></url>
 	<versioncheckurl><![CDATA[http://www.vbulletin.org/forum/misc.php?do=productcheck&pid=disallowregistrationifref]]></versioncheckurl>
 	<dependencies>
@@ -19,7 +19,7 @@
 			<phpcode><![CDATA[// ANTI-SPAMBOT
 // block access if the refering page is the same as your register page
 
-if ($_SERVER[$_SERVER['HTTP_REFERER'] == $vbulletin->options['bburl'].'/register.php' AND $_REQUEST['do'] != 'register') {
+if ($_SERVER[$_SERVER['HTTP_REFERER'] == $vbulletin->options['bburl'].'/register.php' OR $_REQUEST['do'] != 'register') {
 	die();
 }]]></phpcode>
 		</plugin>
